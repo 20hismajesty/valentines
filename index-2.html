@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Valentine 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff4d6d, #ffb3c1);
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      color: white;
+      font-size: 45px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: white;
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 12px 30px;
+      margin: 10px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    #yesBtn {
+      background-color: white;
+      color: #ff004f;
+      font-weight: bold;
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      background-color: black;
+      color: white;
+      position: absolute;
+    }
+
+    #letterBox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #letterContent {
+      background: white;
+      color: #ff004f;
+      padding: 25px;
+      border-radius: 20px;
+      width: 80%;
+      max-width: 420px;
+      font-size: 18px;
+      line-height: 1.5;
+      animation: pop 0.3s ease;
+    }
+
+    .signature {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.7); }
+      to { transform: scale(1); }
+    }
+
+    .heart {
+      position: absolute;
+      color: white;
+      font-size: 20px;
+      animation: float 4s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-800px); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hey Dinah 💕</h1>
+  <p>Will you be my Valentine? 💘</p>
+
+  <div>
+    <button id="yesBtn" onclick="yesClicked()">Yes ❤️</button>
+    <button id="noBtn">No 💔</button>
+  </div>
+
+  <div id="letterBox">
+    <div id="letterContent">
+      <h2>Dear Dinah 💖</h2>
+      <p>
+        I’ve been wanting to tell you this for a while.
+        There’s something about you that makes everything feel brighter and warmer.
+        Your smile, your energy, and the way you make people feel comfortable… it’s special.
+      </p>
+      <p>
+        Dinah, I really like you.
+        Not just as a friend, but as someone I’d love to grow closer to.
+        So today, I just want to ask you something from my heart…
+      </p>
+      <p><strong>Will you be my Valentine? ❤️</strong></p>
+      <p class="signature">— From Mpanji ❤️</p>
+      <button onclick="closeLetter()">Aww ❤️</button>
+    </div>
+  </div>
+
+  <script>
+    function yesClicked() {
+      document.getElementById("letterBox").style.display = "flex";
+    }
+
+    function closeLetter() {
+      document.body.innerHTML = "<h1>Dinah said YES! 😍💖</h1><p>Forever grateful 💘</p><p><strong>— Mpanji ❤️</strong></p>";
+    }
+
+    const noBtn = document.getElementById("noBtn");
+
+    function moveButton() {
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 60);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    noBtn.addEventListener("mouseover", moveButton);
+    noBtn.addEventListener("click", moveButton);
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.bottom = "0px";
+      heart.style.fontSize = Math.random() * 20 + 10 + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 4000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+</body>
+</html>
